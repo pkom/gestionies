@@ -61,3 +61,6 @@ gestionies/media/
 
 # Hitch directory
 tests/.hitch
+
+# settings.json
+config/**/settings.json

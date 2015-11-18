@@ -10,12 +10,35 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 from __future__ import absolute_import, unicode_literals
 
+import json
 import environ
+from os.path import join
+
+from django.core.exceptions import ImproperlyConfigured
 
 ROOT_DIR = environ.Path(__file__) - 3  # (/a/b/myfile.py - 3 = /)
 APPS_DIR = ROOT_DIR.path('gestionies')
 
 env = environ.Env()
+
+########## LOAD JSON SETTINGS
+SETTINGS_DIR = ROOT_DIR.path('config', 'settings')
+settings = join(SETTINGS_DIR.__unicode__(), 'settings.json')
+with open(settings) as f:
+    try:
+        secrets = json.loads(f.read())
+    except (ValueError, KeyError, TypeError):
+        print "JSON format error"
+
+def get_secret(setting, secrets=secrets):
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {0} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
+########## END LOAD JSON SETTINGS
+
+
 
 # APP CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -45,6 +68,8 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'gestionies.users',  # custom users app
     # Your stuff: custom apps go here
+    'sorl.thumbnail',
+
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -204,13 +229,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # ------------------------------------------------------------------------------
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+    'django_auth_ldap.backend.LDAPBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 # Some really nice defaults
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+#ACCOUNT_EMAIL_REQUIRED = True
+#ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 
 # Custom user app defaults
 # Select the correct user model
@@ -226,3 +254,62 @@ AUTOSLUG_SLUGIFY_FUNCTION = 'slugify.slugify'
 ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
+
+########## DJANGO-AUTH-LDAP CONFIGURATION
+import ldap
+from django_auth_ldap.config import LDAPSearch, GroupOfNamesType
+
+AUTH_LDAP_SERVER_URI = get_secret("AUTH_LDAP_SERVER_URI")
+AUTH_LDAP_START_TLS = True
+
+# Autenticacion por usuario django
+AUTH_LDAP_BIND_DN = get_secret("AUTH_LDAP_BIND_DN")
+AUTH_LDAP_BIND_PASSWORD = get_secret("AUTH_LDAP_BIND_PASSWORD")
+AUTH_LDAP_USER_SEARCH = LDAPSearch("ou=People,dc=instituto,dc=extremadura,dc=es",
+    ldap.SCOPE_SUBTREE, "(uid=%(user)s)")
+
+# Autenticacion directa del usuario, pero no obtengo el dni...
+#AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s,ou=People,dc=instituto,dc=extremadura,dc=es"
+
+# Set up the basic group parameters.
+AUTH_LDAP_GROUP_SEARCH = LDAPSearch("ou=Group,dc=instituto,dc=extremadura,dc=es",
+    ldap.SCOPE_SUBTREE, "(objectClass=groupOfNames)"
+)
+AUTH_LDAP_GROUP_TYPE = GroupOfNamesType(name_attr="cn")
+
+# Simple group restrictions
+AUTH_LDAP_REQUIRE_GROUP = "cn=teachers,ou=Group,dc=instituto,dc=extremadura,dc=es"
+AUTH_LDAP_DENY_GROUP = "cn=students,ou=Group,dc=instituto,dc=extremadura,dc=es"
+
+# Populate the Django user from the LDAP directory.
+AUTH_LDAP_USER_ATTR_MAP = {
+    #"first_name": "cn",
+    #"last_name": "sn"
+}
+
+AUTH_LDAP_PROFILE_ATTR_MAP = {
+    "dni": "employeeNumber",
+    "usuario_rayuela": "uid"
+}
+
+AUTH_LDAP_USER_FLAGS_BY_GROUP = {
+    "is_active": "cn=teachers,ou=Group,dc=instituto,dc=extremadura,dc=es",
+    "is_staff": "cn=teachers,ou=Group,dc=instituto,dc=extremadura,dc=es",
+#    "is_superuser": "cn=superuser,ou=django,ou=groups,dc=example,dc=com"
+}
+
+#AUTH_LDAP_PROFILE_FLAGS_BY_GROUP = {
+#    "is_awesome": "cn=awesome,ou=django,ou=groups,dc=example,dc=com",
+#}
+
+# This is the default, but I like to be explicit.
+AUTH_LDAP_ALWAYS_UPDATE_USER = True
+
+# Use LDAP group membership to calculate group permissions.
+AUTH_LDAP_FIND_GROUP_PERMS = True
+
+# Cache group memberships for an hour to minimize LDAP traffic
+#AUTH_LDAP_CACHE_GROUPS = True
+#AUTH_LDAP_GROUP_CACHE_TIMEOUT = 3600
+
+########## END DJANGO-AUTH-LDAP CONFIGURATION
