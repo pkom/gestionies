@@ -12,7 +12,7 @@ from __future__ import absolute_import, unicode_literals
 
 import json
 import environ
-from os.path import join
+from os import path
 
 from django.core.exceptions import ImproperlyConfigured
 
@@ -23,7 +23,7 @@ env = environ.Env()
 
 ########## LOAD JSON SETTINGS
 SETTINGS_DIR = ROOT_DIR.path('config', 'settings')
-settings = join(SETTINGS_DIR.__unicode__(), 'settings.json')
+settings = path.join(SETTINGS_DIR.__unicode__(), 'settings.json')
 with open(settings) as f:
     try:
         secrets = json.loads(f.read())
@@ -85,6 +85,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # i18n
+    'django.middleware.locale.LocaleMiddleware',
 )
 
 # MIGRATIONS CONFIGURATION
@@ -151,6 +153,12 @@ USE_L10N = True
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
 USE_TZ = True
+
+#LOCALE_PATHS = (
+#    path.join(APPS_DIR.__unicode__(), "locale"),
+#)
+
+#print LOCALE_PATHS
 
 # TEMPLATE CONFIGURATION
 # ------------------------------------------------------------------------------
