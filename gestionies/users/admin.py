@@ -7,6 +7,8 @@ from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
 from django.utils.translation import ugettext_lazy as _
 
+from sorl.thumbnail.admin import AdminImageMixin
+
 from .models import User
 
 
@@ -34,7 +36,7 @@ class MyUserCreationForm(UserCreationForm):
 
 
 @admin.register(User)
-class UserAdmin(AuthUserAdmin):
+class UserAdmin(AdminImageMixin, AuthUserAdmin):
 
     fieldsets = (
         (None, {'fields': ('username', 'password')}),

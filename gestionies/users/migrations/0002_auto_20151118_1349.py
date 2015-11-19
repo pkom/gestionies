@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import sorl.thumbnail.fields
 import gestionies.users.models
 
 
@@ -22,11 +21,6 @@ class Migration(migrations.Migration):
             model_name='user',
             name='es_usuario',
             field=models.BooleanField(default=False),
-        ),
-        migrations.AddField(
-            model_name='user',
-            name='foto',
-            field=sorl.thumbnail.fields.ImageField(upload_to=gestionies.users.models.upload_to, blank=True),
         ),
         migrations.AddField(
             model_name='user',

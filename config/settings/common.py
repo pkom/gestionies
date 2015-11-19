@@ -62,13 +62,13 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'sorl.thumbnail', # images thumbnails
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'gestionies.users',  # custom users app
     # Your stuff: custom apps go here
-    'sorl.thumbnail',
 
 )
 
@@ -236,8 +236,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # AUTHENTICATION CONFIGURATION
 # ------------------------------------------------------------------------------
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
     'django_auth_ldap.backend.LDAPBackend',
+    'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 

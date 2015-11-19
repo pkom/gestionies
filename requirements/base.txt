@@ -40,5 +40,5 @@ redis>=2.10.0
 
 
 # Your custom requirements go here
-sorl-thumbnail==12.3
 django-auth-ldap==1.2.7
+sorl-thumbnail==12.3

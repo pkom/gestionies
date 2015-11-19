@@ -1,4 +1,5 @@
-{% load staticfiles i18n %}<!DOCTYPE html>
+{% load staticfiles i18n thumbnail %}
+<!DOCTYPE html>
 <html lang="es" ng-app>
   <head>
     <meta charset="utf-8">
@@ -58,6 +59,12 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'account_logout' %}">{% trans "Logout" %}</a>
                 </li>
+
+                {% thumbnail request.user.foto "50" as foto %}
+                    <img src="{{ foto.url }}">
+                {% empty %}
+                {% endthumbnail %}
+
               {% else %}
                 <li class="nav-item">
                   <a id="sign-up-link" class="nav-link" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>

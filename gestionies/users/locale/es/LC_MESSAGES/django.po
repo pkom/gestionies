@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 21:34+0100\n"
+"POT-Creation-Date: 2015-11-19 09:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,30 +18,42 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: gestionies/users/admin.py:45
+#: admin.py:41
+msgid "Personal info"
+msgstr ""
+
+#: admin.py:42
+msgid "Permissions"
+msgstr ""
+
+#: admin.py:44
+msgid "Important dates"
+msgstr ""
+
+#: admin.py:45
 msgid "Aditional data"
 msgstr "Datos adicionales"
 
-#: gestionies/users/models.py:37
+#: models.py:37
 msgid "Name of User"
 msgstr "Nombre del usuario"
 
-#: gestionies/users/models.py:38
+#: models.py:38
 msgid "Card ID Number"
 msgstr "Número de Identificación (D.N.I./N.I.E./Pasaporte)"
 
-#: gestionies/users/models.py:39
+#: models.py:39
 msgid "Rayuela User"
 msgstr "Usuario Rayuela"
 
-#: gestionies/users/models.py:40
+#: models.py:40
 msgid "User photo"
 msgstr "Foto del usuario"
 
-#: gestionies/users/models.py:41
+#: models.py:41
 msgid "Is Rayuela User"
 msgstr "Es Usuario Rayuela"
 
-#: gestionies/users/models.py:42
+#: models.py:42
 msgid "Rayuela User ID"
 msgstr "ID de Usuario Rayuela"
