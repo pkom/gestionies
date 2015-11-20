@@ -5,6 +5,7 @@ from django import forms
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
 from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from sorl.thumbnail.admin import AdminImageMixin
@@ -48,4 +49,19 @@ class UserAdmin(AdminImageMixin, AuthUserAdmin):
     )
     form = MyUserChangeForm
     add_form = MyUserCreationForm
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'name')
+    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff', 'name', 'get_thumbnail_admin')
+
+    def get_thumbnail_admin(self, obj):
+        mini = obj.get_thumbnail('50')
+        try:
+            output = (
+                '<div style="float:left">'
+                '<a style="width:%spx;display:block;margin:0 0 10px" class="thumbnail" '
+                'target="_blank" href="%s">'
+                '<img src="%s"></a></div>'
+            ) % (mini.width, obj.foto.url, mini.url)
+        except AttributeError:
+            pass
+        return mark_safe(output)
+
+    get_thumbnail_admin.short_description = _('Photo')
