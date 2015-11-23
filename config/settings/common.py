@@ -69,6 +69,8 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'gestionies.users',  # custom users app
     # Your stuff: custom apps go here
+    'gestionies.courses', # academic courses
+    'gestionies.configies', # configuration data for high school
 
 )
 
