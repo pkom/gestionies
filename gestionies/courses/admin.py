@@ -6,6 +6,10 @@ from django.contrib import admin
 from .models import Course
 
 # Register your models here.
+# pre django 1.7
+#admin.site.register(Course)
+
+# django 1.7+
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
     pass

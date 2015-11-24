@@ -46,4 +46,6 @@ class Course(models.Model):
         return reverse('courses:detail', kwargs={'course': self.course})
 
     class Meta:
+        verbose_name = _('course')
+        verbose_name_plural = _('courses')
         ordering = [ 'course' ]

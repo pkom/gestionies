@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-23 22:07+0100\n"
+"POT-Creation-Date: 2015-11-24 10:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps.py:8
+#, fuzzy
+#| msgid "Course"
+msgid "Courses"
+msgstr "Cursos"
 
 #: models.py:12
 msgid "Course"
@@ -91,3 +97,23 @@ msgstr "Peso asignado en la evaluación para el quinto criterio"
 #: models.py:37 models.py:38
 msgid "Weight assigned to sixth criterion evaluation"
 msgstr "Peso asignado en la evaluación para el sexto criterio"
+
+#: models.py:49
+#, fuzzy
+#| msgid "Course"
+msgid "course"
+msgstr "Curso"
+
+#: models.py:50
+#, fuzzy
+#| msgid "Course"
+msgid "courses"
+msgstr "Cursos"
+
+#, fuzzy
+#~| msgid "Course"
+#~ msgid "Coursesssssss"
+#~ msgstr "Cursosfffffff"
+
+#~ msgid "Courses management"
+#~ msgstr "Gestión de cursos"
