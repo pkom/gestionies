@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-24 10:25+0100\n"
+"POT-Creation-Date: 2015-11-25 20:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,8 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:8
-#, fuzzy
-#| msgid "Course"
 msgid "Courses"
 msgstr "Cursos"
 
@@ -30,7 +28,7 @@ msgstr "Curso"
 
 #: models.py:12
 msgid "Academic course"
-msgstr "Curso académico"
+msgstr "Curso Académico"
 
 #: models.py:13
 msgid "Delays for warning"
@@ -38,7 +36,7 @@ msgstr "Retrasos para amonestación"
 
 #: models.py:14
 msgid "Number of delays for warning"
-msgstr "Número de retrasos para amonestación"
+msgstr "Número de retrasos acumulados que generan amonestación"
 
 #: models.py:15
 msgid "Delays by quarter"
@@ -46,7 +44,7 @@ msgstr "Retrasos por trimestres"
 
 #: models.py:15
 msgid "Reset delays by quarter"
-msgstr "Reinicializar amonestaciones por retrasos por trimestres"
+msgstr "Generar amonestaciones por retrasos trimestralmente"
 
 #: models.py:16
 msgid "First quarter start date"
@@ -61,8 +59,6 @@ msgid "Second quarter start date"
 msgstr "Fecha inicio segundo trimestre"
 
 #: models.py:19
-#, fuzzy
-#| msgid "Second quarter start date"
 msgid "Second quarter end date"
 msgstr "Fecha fin segundo trimestre"
 
@@ -76,44 +72,32 @@ msgstr "Fecha fin tercer trimestre"
 
 #: models.py:22 models.py:23
 msgid "Weight assigned to first criterion evaluation"
-msgstr "Peso asignado en la evaluación para el primer criterio"
+msgstr "Peso asignado al primer criterio evaluable"
 
 #: models.py:25 models.py:26
 msgid "Weight assigned to second criterion evaluation"
-msgstr "Peso asignado en la evaluación para el segundo criterio"
+msgstr "Peso asignado al segundo criterio evaluable"
 
 #: models.py:28 models.py:29
 msgid "Weight assigned to third criterion evaluation"
-msgstr "Peso asignado en la evaluación para el tercer criterio"
+msgstr "Peso asignado al tercer criterio evaluable"
 
 #: models.py:31 models.py:32
 msgid "Weight assigned to fourth criterion evaluation"
-msgstr "Peso asignado en la evaluación para el cuarto criterio"
+msgstr "Peso asignado al cuarto criterio evaluable"
 
 #: models.py:34 models.py:35
 msgid "Weight assigned to fifth criterion evaluation"
-msgstr "Peso asignado en la evaluación para el quinto criterio"
+msgstr "Peso asignado al quinto criterio evaluable"
 
 #: models.py:37 models.py:38
 msgid "Weight assigned to sixth criterion evaluation"
-msgstr "Peso asignado en la evaluación para el sexto criterio"
+msgstr "Peso asignado al sexto criterio evaluable"
 
 #: models.py:49
-#, fuzzy
-#| msgid "Course"
 msgid "course"
-msgstr "Curso"
+msgstr "curso"
 
 #: models.py:50
-#, fuzzy
-#| msgid "Course"
 msgid "courses"
-msgstr "Cursos"
-
-#, fuzzy
-#~| msgid "Course"
-#~ msgid "Coursesssssss"
-#~ msgstr "Cursosfffffff"
-
-#~ msgid "Courses management"
-#~ msgstr "Gestión de cursos"
+msgstr "cursos"
