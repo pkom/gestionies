@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-23 21:46+0100\n"
+"POT-Creation-Date: 2015-11-26 10:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,6 +37,10 @@ msgstr "Datos adicionales"
 #: admin.py:67
 msgid "Photo"
 msgstr "Fotografía"
+
+#: apps.py:8
+msgid "Users"
+msgstr "Usuarios"
 
 #: models.py:41
 msgid "Name of User"
