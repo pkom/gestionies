@@ -53,6 +53,7 @@ class UserAdmin(AdminImageMixin, AuthUserAdmin):
 
     def get_thumbnail_admin(self, obj):
         mini = obj.get_thumbnail('50')
+        output = ''
         try:
             output = (
                 '<div style="float:left">'
