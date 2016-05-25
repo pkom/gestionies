@@ -2,6 +2,9 @@
 FROM python:2.7
 ENV PYTHONUNBUFFERED 1
 
+# Some devs for ldap auth
+RUN apt-get update && apt-get install -y libldap2-dev libsasl2-dev libssl-dev
+
 # Requirements have to be pulled and installed here, otherwise caching won't work
 COPY ./requirements /requirements
 
