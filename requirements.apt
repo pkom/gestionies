@@ -13,10 +13,10 @@ zlib1g-dev
 libpq-dev
 
 ##Pillow dependencies
-libtiff4-dev
+libtiff5-dev
 libjpeg8-dev
 libfreetype6-dev
-liblcms1-dev
+liblcms2-dev
 libwebp-dev
 
 
@@ -44,6 +44,7 @@ curl
 llvm
 
 ##ldap
+python-ldap
 libldap2-dev
 libsasl2-dev
 libssl-dev
